@@ -1,0 +1,93 @@
+// Callback Function
+
+var car = [
+    {name: "Jeep", model: 500, weight: 1500, color: "white"},
+    {name: "Lada", model: 800, weight: 1400, color: "black"},
+    {name: "Datsun", model: 600, weight: 1600, color: "blue"},
+    {name: "Mini", model: 3000, weight: 900, color: "read"},  
+
+]
+
+// Custom Map function===============================
+function DoWhatEverYouWant(arr, cb) {
+    let newArr = [];
+    for(var i = 0; i <arr.length; i++){
+        var result = cb(arr[i])
+        newArr.push(result)
+    }
+    return newArr
+}
+
+ DoWhatEverYouWant(car,function (val) { 
+    console.log("Car name : " + val.name +"," + " car model: " + val.model*2)
+})
+DoWhatEverYouWant(car,function (val) { 
+    console.log(val.model*2)
+})
+
+
+
+
+
+// Custom filter function ===============================
+function filteredArr(arr, cb) {
+    let newArr = [];
+    for(var i = 0; i< arr.length; i++){
+        newArr.push(cb(arr[i]))
+    }
+    return newArr
+}
+
+
+filteredArr(car, function (val) {
+    if (val.model > 600){
+         console.log("Model: " + val.model);   
+    }
+    
+})
+
+
+// Custom filter2 function===============================
+
+function myf(arr, cb) {
+    let newArr = []
+
+    for(let i = 0; i <arr.length; i++){
+        
+        if(cb(arr[i])){
+            newArr.push(arr[i])
+        }
+    }
+    return newArr
+}
+
+var filter2 = myf(car, function (data) {
+    return data.model > 600
+    // return data.model % 2 == 0 
+   
+    
+})
+console.log(filter2);
+
+// Custom Reduce function===============================
+var myArr= [1, 2 , 3 , 4 , 5 ]
+
+var mayArr2 = ["r", "a", "y", "h", "a","n"]
+function myReduce(arr, cb) {
+    let result = null
+    
+    for(var i = 0; i <arr.length; i++){
+        if(result === null){
+            result = arr[i]
+        }else{
+            result = cb(result, arr[i])
+        }
+    }
+    return result
+}
+
+var data = myReduce(mayArr2, function (a, b) {
+    return a + "-" +b
+})
+
+console.log(data);
