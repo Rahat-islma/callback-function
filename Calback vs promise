@@ -1,0 +1,78 @@
+
+//Create Callback vs Promise =============================
+
+//Callback Function 
+
+first(2, (firstResult, err) => {
+  if(!err){
+    second(firstResult, (seconResult, err) => {
+      if(!err){
+        third(seconResult, (thirdResult, err) => {
+          if(!err){
+            forth(thirdResult, (forthResult, err) => {
+             (`The result is: ${forthResult} `);
+              // The result is 10
+            })
+            
+          }
+
+        })
+      }
+    })
+  }
+})     
+
+
+function first(valu, callback) {
+   callback(valu + 2, false)
+   
+ }
+ 
+function second(valu, callback) {
+   callback(valu + 2, false)
+   
+ }
+ 
+function third(valu, callback) {
+   callback(valu + 2, false)
+   
+ }
+function forth(valu, callback) {
+   callback(valu + 2, false)
+   
+ }
+
+
+
+ // Promise =========================================
+
+let promise = new Promise((resolve, reject) => {
+   resolve(2)
+ })
+ 
+ 
+ 
+ promise.then(first).then(second).then(third).then(forth).then(response => {
+   console.log(`The result is : ${response}`);
+   // The result is 10
+ })
+ 
+
+function first(valu) {
+   return valu + 2
+   
+ }
+ 
+function second(valu) {
+   return valu + 2
+   
+ }
+ 
+function third(valu) {
+   return valu + 2
+   
+ }
+function forth(valu, callback) {
+   return valu + 2
+   
+ }
