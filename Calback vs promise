@@ -10,7 +10,7 @@ first(2, (firstResult, err) => {
         third(seconResult, (thirdResult, err) => {
           if(!err){
             forth(thirdResult, (forthResult, err) => {
-             (`The result is: ${forthResult} `);
+             console.log(`The result is: ${forthResult} `);
               // The result is 10
             })
             
